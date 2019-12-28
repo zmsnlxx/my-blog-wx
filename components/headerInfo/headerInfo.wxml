@@ -1,0 +1,5 @@
+<view class="header">
+    <view class="title">
+        {{ title }}
+    </view>
+</view>

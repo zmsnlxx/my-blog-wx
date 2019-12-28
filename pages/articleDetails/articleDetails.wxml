@@ -1,0 +1,16 @@
+
+<!--引入towxml模版入口文件，并使用模版-->
+<import src="/towxml/entry.wxml"></import>
+<head-info id="headInfo" headInfo="{{headInfo}}"></head-info>
+<view class="container">
+   <view class="desc">
+      <view class="time">
+         日期：{{headInfo.updateTime ? headInfo.updateTime : headInfo.createdTime}}
+      </view>
+      <view class="author">
+         作者：{{headInfo.author}}
+      </view>
+   </view>
+   <template is="entry" data="{{...article}}"></template>
+    <!-- <rich-text class='content' nodes="{{article.content}}"></rich-text> -->
+</view>

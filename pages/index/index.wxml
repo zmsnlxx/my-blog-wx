@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view class="container" wx:if="{{allClass.length > 0}}">
+      <scroll-view class="nav-bar" scroll-x="{{true}}" style="width: 100%">
+          <view wx:for="{{allClass}}" data-idx="{{index}}" class="item {{currentIndex === index ? 'active' : ''}}" wx:key="index" bindtap="changeClass">{{item.name}}</view>
+      </scroll-view>
+      <scroll-view scroll-y="{{true}}" style="width: 100%">
+        <view class="content" wx:if="{{article.length > 0}}">
+          <view class="article_info" wx:for="{{article}}" wx:key="index" bindtap="getArticleDetails" data-articleId="{{item.id}}">
+              <view class="article_header">
+                  <view class="article_title">
+                      {{item.title}}
+                  </view>
+              </view>
+              <view class="article_content">
+                  <view class="first">
+                      <text class="text">
+                        {{item.author || 'lxx'}}
+                      </text>
+                      <text class="text">
+                          {{ item.updateTime ? item.updateTime : item.createdTime }}
+                      </text>
+                  </view>
+                  <view class="second txt-cut">
+                      {{item.abstract}}
+                  </view>
+                  <view class="third">
+                      <text class="text">
+                          {{item.fabulousNum}} 赞同
+                      </text>
+                      <text class="text">
+                          {{item.visitNum}} 评论
+                      </text>
+                      <text class="right">
+                          ...
+                      </text>
+                  </view>
+              </view>
+          </view>
+        </view>
+        <view class="none" wx:else>
+            暂无文章!
+        </view>
+      </scroll-view>
+</view>
+<view class="container error" wx:else>
+    获取数据失败！
+</view>

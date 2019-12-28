@@ -1,0 +1,15 @@
+.container .desc {
+  margin-top: 10rpx;
+  padding: 0 20rpx;
+  height: 30rpx;
+  color: red;
+}
+.container .desc .author {
+  font-size: 10px;
+  float: right;
+}
+.container .desc .time {
+  font-size: 10px;
+  float: right;
+  margin-left: 20rpx;
+}

@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "head-info": "/components/headerInfo/headerInfo"
+    },
+    "navigationBarTitleText": "文章详情"
+}

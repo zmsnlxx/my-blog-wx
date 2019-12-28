@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/class/class",
+    "pages/my/my",
+    "pages/login/login",
+    "pages/articleDetails/articleDetails"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "个人博客",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#989DA3",
+    "selectedColor": "#009BFF",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/home_icon_ks_defualt.png",
+        "selectedIconPath": "/images/home_icon_ks_pressed.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/class/class",
+        "iconPath": "/images/home_icon_fx_default.png",
+        "selectedIconPath": "/images/home_icon_fx_pressed.png",
+        "text": "统计"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "/images/home_icon_wd_defualt.png",
+        "selectedIconPath": "/images/home_icon_wd_pressed.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

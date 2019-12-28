@@ -1,0 +1,65 @@
+/* *app.wxss* */
+page{
+  background-color:#eee;
+}
+/*单行溢出*/
+.one-txt-cut {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*多行溢出*/
+.txt-cut {
+  overflow : hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+}
+
+.text {
+  line-height: 16rpx;
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 20rpx;
+}
+
+/* 选项卡部分 */
+.nav-bar {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  white-space:nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #F2F5FB;
+}
+.nav-bar .item {
+  position: relative;
+  height: 100%;
+  font-size: 30rpx;
+  color: #353B45;
+  letter-spacing: 0;
+  margin-right: 80rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-bar .item:first-of-type {
+  margin-left: 40rpx;
+}
+.nav-bar .item.active {
+  color: #009BFF;
+}
+.nav-bar .item.active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 40rpx;
+  bottom: 0;  
+  left: 50%;  
+  transform: translateX(-50%);
+  height: 4rpx;
+  border-radius: 2rpx;
+  background: #009BFF;
+}
