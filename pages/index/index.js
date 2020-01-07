@@ -7,7 +7,7 @@ Page({
     article: [],
     allClass: [],
     currentIndex: 0,
-    classId: null
+    classId: null,
   },
   onLoad: async function () {
     wx.showLoading({
@@ -19,11 +19,11 @@ Page({
     this.setData({
       allClass,
       classId
-    })
+    });
     const article = await this.getClassArticle();
     this.setData({
       article
-    })
+    });
     wx.hideLoading();
   },
   // 切换文章分类
@@ -39,7 +39,7 @@ Page({
     const article = await this.getClassArticle();
     this.setData({
       article
-    })
+    });
     wx.hideLoading();
   },
   // 获取所有文章分类
@@ -55,7 +55,7 @@ Page({
   },
   getArticleDetails(e) {
       const id = e.currentTarget.dataset.articleid;
-      wx.setStorageSync('articleId',id)
+      wx.setStorageSync('articleId',id);
       wx.navigateTo({
           url: `/pages/articleDetails/articleDetails`
       });

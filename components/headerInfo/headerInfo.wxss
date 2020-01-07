@@ -2,21 +2,6 @@
   padding: 0 20rpx;
   height: 80rpx;
   background-color: white;
-}
-.header .title {
   text-align: center;
-  height: 50rpx;
-  line-height: 50rpx;
-}
-.header .desc {
-  height: 30rpx;
-}
-.header .desc .author {
-  font-size: 10px;
-  float: right;
-}
-.header .desc .time {
-  font-size: 10px;
-  float: right;
-  margin-left: 20rpx;
+  line-height: 80rpx;
 }

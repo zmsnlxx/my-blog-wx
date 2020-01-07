@@ -1,16 +1,95 @@
-
 <!--引入towxml模版入口文件，并使用模版-->
 <import src="/towxml/entry.wxml"></import>
-<head-info id="headInfo" headInfo="{{headInfo}}"></head-info>
-<view class="container">
-   <view class="desc">
-      <view class="time">
-         日期：{{headInfo.updateTime ? headInfo.updateTime : headInfo.createdTime}}
+<view wx:if="{{articleData}}">
+   <!--  文章标题  -->
+   <head-info id="headInfo" headInfo="{{articleData}}"></head-info>
+   <!--  文章内容  -->
+   <view class="container">
+      <view class="desc">
+         <view class="time">
+            日期：{{articleData.updateTime ? articleData.updateTime : articleData.createdTime}}
+         </view>
+         <view class="author">
+            作者：{{articleData.author}}
+         </view>
       </view>
-      <view class="author">
-         作者：{{headInfo.author}}
+      <template is="entry" data="{{...article}}"></template>
+      <button class="btn" bindtap="clickFabulous">{{ isFabulous ? '已点赞' : '点赞'}}</button>
+   </view>
+<!--  评论内容  -->
+   <view class="commentNav">
+      <view class="title">发表评论：({{ articleData.commentData.length || 0 }}条评论)</view>
+      <view class="item" wx:for="{{articleData.commentData}}" wx:key="{{index}}">
+         <image class="img" src="{{ item.url }}"></image>
+         <view class="content">
+            <view class="content_name">
+               <text style="margin-right: 30rpx;color: black;">{{ item.name }}</text>
+               <text>{{ item.time }}</text>
+               <view class="fabulous">
+                  <text class="fabulous-num">{{ item.fabulous || 0 }}</text>
+                  <image class="fabulous-icon" src="../../images/fabulous.png" style="width: 20rpx"></image>
+               </view>
+            </view>
+            <view class="content_comment">{{ item.comment }}</view>
+            <view class="content_btn" wx:if="{{ item.reply.length > 0 }}" data-comment="{{item}}" bindtap="getReply">{{ item.reply.length }}条回复>></view>
+            <view class="content_btn" wx:else data-comment="{{item}}" bindtap="goReply">回复</view>
+         </view>
       </view>
    </view>
-   <template is="entry" data="{{...article}}"></template>
-    <!-- <rich-text class='content' nodes="{{article.content}}"></rich-text> -->
+    <!--  底部评论框  -->
+   <view class="inputView">
+      <input class="input" placeholder="{{placeholder}}" value="{{textarea}}" bindinput="listenerPhoneInput" />
+      <button class="button" bindgetuserinfo='goComment' open-type="getUserInfo">发布</button>
+   </view>
+   <!--  遮罩层  -->
+   <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+   <!--  弹出层（显示评论详情）  -->
+   <scroll-view scroll-y="{{true}}" bindscroll="getScroll" catchtouchmove="true" animation="{{animationData}}" catchtouchmove='true' class="commodity_attr_box" wx:if="{{showModalStatus}}">
+      <view class="comment-content">
+         <view class="header {{ scrollTop > 120 ? 'page-group-position' : '' }}">
+            <image src="../../images/close.png" class="close" bindtap="hideModal"></image>
+            <view class="title">评论详情</view>
+         </view>
+         <view class="item">
+            <image class="img" src="{{ currentComment.url }}"></image>
+            <view class="content">
+               <view class="content_name">
+                  <text style="margin-right: 30rpx;color: black;">{{ currentComment.name }}</text>
+                  <text>{{ currentComment.time }}</text>
+                  <view class="fabulous">
+                     <text class="fabulous-num">{{ currentComment.fabulous || 0 }}</text>
+                     <image class="fabulous-icon" src="../../images/fabulous.png" style="width: 20rpx"></image>
+                  </view>
+               </view>
+               <view class="content_comment">{{ currentComment.comment }}</view>
+            </view>
+         </view>
+      </view>
+      <view class="reply-content">
+         <view class="title">{{ currentComment.reply.length || 0 }}条回复</view>
+         <view class="item" wx:for="{{currentComment.reply}}" wx:key="{{index}}">
+            <image class="img" src="{{ item.url }}"></image>
+            <view class="content">
+               <view class="content_name">
+                  <text style="margin-right: 30rpx;color: black;">{{ item.name }}</text>
+                  <text>{{ item.time }}</text>
+                  <view class="fabulous">
+                     <text class="fabulous-num">{{ item.fabulous || 0 }}</text>
+                     <image class="fabulous-icon" src="../../images/fabulous.png" style="width: 20rpx"></image>
+                  </view>
+               </view>
+               <view class="content_comment">
+                  <text wx:if="{{item.replyUser}}" style="font-size: 12px;display: inline-block;margin-right: 10rpx">{{item.replyUser}}</text>
+                  <text>{{ item.comment }}</text>
+                  </view>
+               <view class="content_btn" wx:if="{{ item.reply.length > 0 }}" data-comment="{{item}}" bindtap="getReply">{{ item.reply.length }}条回复>></view>
+               <view class="content_btn" wx:else data-comment="{{item}}" bindtap="goReplyComment">回复</view>
+            </view>
+         </view>
+      </view>
+      <view class="reply-input">
+         <input class="input" placeholder="{{replyPlaceholder}}" value="{{textarea}}" bindinput="listenerPhoneInput" />
+         <button class="button" bindgetuserinfo='goComment' data-commentId="{{currentComment.id}}" open-type="getUserInfo">回复</button>
+      </view>
+   </scroll-view>
 </view>

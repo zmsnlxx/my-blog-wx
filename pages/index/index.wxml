@@ -28,7 +28,7 @@
                           {{item.fabulousNum}} 赞同
                       </text>
                       <text class="text">
-                          {{item.visitNum}} 评论
+                          {{item.commentData.length}} 评论
                       </text>
                       <text class="right">
                           ...
