@@ -46,12 +46,12 @@
    <!--  弹出层（显示评论详情）  -->
    <scroll-view scroll-y="{{true}}" bindscroll="getScroll" catchtouchmove="true" animation="{{animationData}}" catchtouchmove='true' class="commodity_attr_box" wx:if="{{showModalStatus}}">
       <view class="comment-content">
-         <view class="header {{ scrollTop > 120 ? 'page-group-position' : '' }}">
-            <image src="../../images/close.png" class="close" bindtap="hideModal"></image>
+         <view class="header">
+            <image src="../../images/close.png" mode="aspectFill" class="close" bindtap="hideModal"></image>
             <view class="title">评论详情</view>
          </view>
          <view class="item">
-            <image class="img" src="{{ currentComment.url }}"></image>
+            <image class="img" mode="aspectFill" src="{{ currentComment.url }}"></image>
             <view class="content">
                <view class="content_name">
                   <text style="margin-right: 30rpx;color: black;">{{ currentComment.name }}</text>
@@ -68,7 +68,7 @@
       <view class="reply-content">
          <view class="title">{{ currentComment.reply.length || 0 }}条回复</view>
          <view class="item" wx:for="{{currentComment.reply}}" wx:key="{{index}}">
-            <image class="img" src="{{ item.url }}"></image>
+            <image mode="aspectFill" class="img" src="{{ item.url }}"></image>
             <view class="content">
                <view class="content_name">
                   <text style="margin-right: 30rpx;color: black;">{{ item.name }}</text>
