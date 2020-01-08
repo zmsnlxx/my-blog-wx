@@ -47,8 +47,8 @@
    <scroll-view scroll-y="{{true}}" bindscroll="getScroll" catchtouchmove="true" animation="{{animationData}}" catchtouchmove='true' class="commodity_attr_box" wx:if="{{showModalStatus}}">
       <view class="comment-content">
          <view class="header">
-            <image src="../../images/close.png" mode="aspectFill" class="close" bindtap="hideModal"></image>
             <view class="title">评论详情</view>
+            <image src="../../images/close.png" mode="aspectFill" class="close" bindtap="hideModal"></image>
          </view>
          <view class="item">
             <image class="img" mode="aspectFill" src="{{ currentComment.url }}"></image>

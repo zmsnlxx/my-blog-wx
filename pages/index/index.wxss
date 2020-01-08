@@ -3,7 +3,6 @@
 }
 .container .content .article_info {
   padding: 0 15rpx;
-  height: 260rpx;
   background-color: white;
   border-radius: 10rpx;
   margin-bottom: 15rpx;
@@ -16,9 +15,6 @@
   height: 50rpx;
   line-height: 70rpx;
   font-weight: 600;
-}
-.container .content .article_info .article_content {
-  height: 200rpx;
 }
 .container .content .article_info .article_content .first {
   height: 40rpx;
@@ -41,10 +37,4 @@
   line-height: 16rpx;
   font-size: 16px;
   margin-right: 20rpx;
-}
-.error {
-  align-items: center;
-  /*垂直居中*/
-  justify-content: center;
-  /*水平居中*/
 }

@@ -1,0 +1,35 @@
+<scroll-view scroll-y="{{true}}" style="width: 100%">
+    <view class="content" wx:if="{{article.length > 0}}">
+        <view class="article_info" wx:for="{{article}}" wx:key="index" bindtap="getArticleDetails" data-articleId="{{item.id}}">
+            <view class="article_header">
+                {{item.title}}
+            </view>
+            <view class="article_content">
+                <view class="first">
+                    <text class="text">
+                        {{item.author || 'lxx'}}
+                    </text>
+                    <text class="text">
+                        {{ item.updateTime ? item.updateTime : item.createdTime }}
+                    </text>
+                </view>
+                <image style="width: 100%" src="{{item.img}}"></image>
+                <view class="second txt-cut">
+                    {{item.abstract}}
+                </view>
+                <view class="third">
+                    <text class="text">
+                        {{item.fabulousNum}} 赞同
+                    </text>
+                    <text class="text">
+                        {{item.commentData.length}} 评论
+                    </text>
+                    <text class="right">
+                        ...
+                    </text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <error-info wx:else></error-info>
+</scroll-view>

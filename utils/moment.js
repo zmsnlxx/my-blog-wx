@@ -1690,7 +1690,7 @@
         });
     }
 
-    meridiem('a', true);
+    meridiem('message.png', true);
     meridiem('A', false);
 
     // ALIASES
@@ -1706,7 +1706,7 @@
         return locale._meridiemParse;
     }
 
-    addRegexToken('a',  matchMeridiem);
+    addRegexToken('message.png',  matchMeridiem);
     addRegexToken('A',  matchMeridiem);
     addRegexToken('H',  match1to2);
     addRegexToken('h',  match1to2);
@@ -1725,7 +1725,7 @@
         var kInput = toInt(input);
         array[HOUR] = kInput === 24 ? 0 : kInput;
     });
-    addParseToken(['a', 'A'], function (input, array, config) {
+    addParseToken(['message.png', 'A'], function (input, array, config) {
         config._isPm = config._locale.isPM(input);
         config._meridiem = input;
     });

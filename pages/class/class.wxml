@@ -1,2 +1,7 @@
-<!--pages/class/class.wxml-->
-<text>后续开发中...</text>
+<!--index.wxml-->
+<view class="container">
+      <scroll-view class="nav-bar" scroll-x="{{true}}" style="width: 100%">
+          <view wx:for="{{allClass}}" data-idx="{{index}}" class="item {{currentIndex === index ? 'active' : ''}}" wx:key="index" bindtap="changeClass">{{item.name}}</view>
+      </scroll-view>
+      <card-info article="{{article}}"></card-info>
+</view>

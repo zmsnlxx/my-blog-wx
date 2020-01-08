@@ -1,0 +1,4 @@
+<view class="error-info">
+    <image class="img" src="../../images/none.png"></image>
+    <text class="message">{{ message }}</text>
+</view>
