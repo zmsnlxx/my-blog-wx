@@ -1,3 +1,4 @@
+<!-- 首页 -->
 <view class="container">
     <scroll-view class="nav-bar" scroll-x="{{true}}" style="width: 100%">
         <view wx:for="{{allClass}}" data-idx="{{index}}" class="item {{currentIndex === index ? 'active' : ''}}" wx:key="index" bindtap="changeClass">{{item.name}}</view>

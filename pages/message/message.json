@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "error-info": "/components/errorInfo/error",
+    "comment-info": "/components/commentInfo/comment"
+  },
   "navigationBarTitleText": "留言板"
 }

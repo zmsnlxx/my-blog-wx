@@ -1,0 +1,59 @@
+.comment-content {
+  background-color: white;
+  padding: 20rpx 40rpx;
+}
+.comment-content .item {
+  display: flex;
+}
+.comment-content .item .img {
+  width: 60px;
+  height: 50px;
+  border-radius: 10rpx;
+  margin: 0;
+}
+.comment-content .item .content {
+  width: 100%;
+  margin-left: 30rpx;
+}
+.comment-content .item .content .content_comment {
+  margin-top: 10rpx;
+}
+.comment-content .item .content .content_name {
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  color: #999;
+}
+.comment-content .item .content .content_name .fabulous {
+  display: inline-block;
+  float: right;
+  height: 17px;
+}
+.comment-content .item .content .content_name .fabulous .fabulous-icon {
+  width: 11px;
+  height: 11px;
+  margin: 0 10rpx;
+}
+.comment-content .item .content .content_btn {
+  margin-top: 20rpx;
+  font-size: 10px;
+}
+.comment-content .header {
+  height: 80rpx;
+  margin-bottom: 20rpx;
+  line-height: 80rpx;
+  background-color: white;
+  width: 100%;
+  display: flex;
+}
+.comment-content .header .close {
+  width: 40rpx;
+  margin: 24rpx 0;
+  height: 40rpx;
+  display: inline-block;
+}
+.comment-content .header .title {
+  width: 91%;
+  display: inline-block;
+  text-align: left;
+}

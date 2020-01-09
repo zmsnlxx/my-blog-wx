@@ -17,7 +17,10 @@ Page({
         commentId: null,
         replyUser: null,
         replyPlaceholder: '回复评论...',
-        scrollTop: 0
+        scrollTop: 0,
+        textarea: '',
+        showModalStatus: false,
+        animationData: null
     },
     onLoad: async function () {
         const that = this;

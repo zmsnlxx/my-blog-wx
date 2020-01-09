@@ -1,1 +1,12 @@
-<text>留言页面开发中...</text>
+<!-- 留言页面 -->
+<!--  评论内容  -->
+<comment-info wx:if="{{ commentData.length > 0 }}" title="热门留言" commentData="{{ hostCommentData }}" bind:changeCommentData="changeCommentData" bind:replyComment="replyComment"></comment-info>
+<comment-info wx:if="{{ commentData.length > 0 }}" title="全部留言" commentData="{{ commentData }}" bind:changeCommentData="changeCommentData" bind:replyComment="replyComment"></comment-info>
+<error-info message="暂无留言！" wx:else></error-info>
+<view style="height: 90rpx;"></view>
+<!--  底部评论框  -->
+<view class="inputView">
+    <input class="input" placeholder="{{placeholder}}" value="{{textarea}}" bindinput="listenerPhoneInput" />
+    <button class="button" bindgetuserinfo='goComment' open-type="getUserInfo">发布</button>
+</view>
+

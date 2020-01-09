@@ -1,0 +1,20 @@
+<!-- 评论展示模版 -->
+<view class="commentNav">
+    <view wx:if="{{ title !== '' }}" class="title">{{ title }}</view>
+    <view class="item" wx:for="{{ commentData }}" wx:key="{{index}}">
+        <image class="img" src="{{ item.url }}"></image>
+        <view class="content">
+            <view class="content_name">
+                <text style="margin-right: 30rpx;color: black;">{{ item.name }}</text>
+                <text>{{ item.time }}</text>
+                <view class="fabulous" bindtap="clickFabulous" data-comment="{{item}}" wx:if="{{isShowFabulous}}">
+                    <text wx:if="{{ item.fabulousNum !== 0 }}" class="fabulous-num">{{ item.fabulousNum }}</text>
+                    <image class="fabulous-icon" src="../../images/fabulous.png" style="width: 20rpx"></image>
+                </view>
+            </view>
+            <view class="content_comment">{{ item.comment }}</view>
+            <view class="content_btn" wx:if="{{ item.reply.length > 0 }}" data-comment="{{item}}" bindtap="getReply">{{ item.reply.length }}条回复>></view>
+            <view class="content_btn" wx:else data-comment="{{item}}" bindtap="goReply">回复</view>
+        </view>
+    </view>
+</view>

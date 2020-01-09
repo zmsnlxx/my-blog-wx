@@ -1,3 +1,4 @@
+<!-- 头部模版 -->
 <view class="header">
     {{ title }}
 </view>

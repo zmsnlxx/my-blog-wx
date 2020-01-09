@@ -1,3 +1,4 @@
+<!-- 文章详情页 -->
 <!--引入towxml模版入口文件，并使用模版-->
 <import src="/towxml/entry.wxml"></import>
 <view wx:if="{{articleData}}">
@@ -25,10 +26,6 @@
             <view class="content_name">
                <text style="margin-right: 30rpx;color: black;">{{ item.name }}</text>
                <text>{{ item.time }}</text>
-               <view class="fabulous">
-                  <text class="fabulous-num">{{ item.fabulous || 0 }}</text>
-                  <image class="fabulous-icon" src="../../images/fabulous.png" style="width: 20rpx"></image>
-               </view>
             </view>
             <view class="content_comment">{{ item.comment }}</view>
             <view class="content_btn" wx:if="{{ item.reply.length > 0 }}" data-comment="{{item}}" bindtap="getReply">{{ item.reply.length }}条回复>></view>
@@ -56,10 +53,6 @@
                <view class="content_name">
                   <text style="margin-right: 30rpx;color: black;">{{ currentComment.name }}</text>
                   <text>{{ currentComment.time }}</text>
-                  <view class="fabulous">
-                     <text class="fabulous-num">{{ currentComment.fabulous || 0 }}</text>
-                     <image class="fabulous-icon" src="../../images/fabulous.png" style="width: 20rpx"></image>
-                  </view>
                </view>
                <view class="content_comment">{{ currentComment.comment }}</view>
             </view>

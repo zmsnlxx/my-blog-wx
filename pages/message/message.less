@@ -1,0 +1,117 @@
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+/*对话框 */
+.commodity_attr_box {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  box-sizing: border-box;
+  background-color: white;
+  .comment-content {
+    height: 200rpx;
+    background-color: white;
+    padding: 0 40rpx 20rpx 40rpx;
+    .item {
+      display: flex;
+      .img {
+        width: 60px;
+        height: 50px;
+        border-radius: 10rpx;
+        margin: 0;
+      }
+      .content {
+        width: 100%;
+        margin-left: 30rpx;
+        .content_comment {
+          margin-top: 10rpx;
+        }
+        .content_name {
+          height: 20px;
+          line-height: 20px;
+          font-size: 12px;
+          color: #999;
+
+          .fabulous {
+            display: inline-block;
+            float: right;
+            height: 17px;
+
+            .fabulous-icon {
+              width: 11px;
+              height: 11px;
+              margin: 0 10rpx;
+            }
+          }
+        }
+        .content_btn {
+          margin-top: 20rpx;
+          font-size: 10px
+        }
+      }
+    }
+    .header {
+      height: 80rpx;
+      margin-bottom: 20rpx;
+      line-height: 80rpx;
+      background-color: white;
+      width: 100%;
+      display: flex;
+      .close {
+        width: 40rpx;
+        margin: 24rpx 0;
+        height: 40rpx;
+        display: inline-block;
+      }
+      .title {
+        width: 91%;
+        display: inline-block;
+        text-align: left;
+      }
+    }
+  }
+  .reply-input {
+    width: 100%;
+    height: 80rpx;
+    padding: 0 20rpx;
+    display: flex;
+    background-color: white;
+
+    .input {
+      width: 75%;
+      height: 80%;
+      line-height: 80rpx;
+      //background-color: #eee;
+      margin-top: 8rpx;
+      padding-left: 20rpx;
+    }
+
+    .btn {
+      width: 20%;
+      line-height: 80rpx;
+      display: inline-block;
+      text-align: center;
+
+    }
+
+    .button {
+      background-color: #fff;
+    }
+
+    .button:after {
+      border: none;
+    }
+  }
+}

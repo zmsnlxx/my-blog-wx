@@ -1,0 +1,21 @@
+<!-- 评论详情页 -->
+<scroll-view scroll-y="{{true}}" bindscroll="getScroll" catchtouchmove="true" animation="{{animationData}}">
+    <view class="comment-content">
+        <view class="item">
+            <image class="img" mode="aspectFill" src="{{ currentComment.url }}"></image>
+            <view class="content">
+                <view class="content_name">
+                    <text style="margin-right: 30rpx;color: black;">{{ currentComment.name }}</text>
+                    <text>{{ currentComment.time }}</text>
+                </view>
+                <view class="content_comment">{{ currentComment.comment }}</view>
+            </view>
+        </view>
+    </view>
+    <comment-info title="{{currentComment.reply.length}}条评论" isShowFabulous="{{false}}" commentData="{{ currentComment.reply }}" bind:changeCommentData="changeCommentData" bind:replyComment="replyComment"></comment-info>
+</scroll-view>
+<view style="height: 90rpx;"></view>
+<view class="inputView">
+    <input class="input" placeholder="{{placeholder}}" value="{{textarea}}" bindinput="listenerPhoneInput" />
+    <button class="button" bindgetuserinfo='goComment' open-type="getUserInfo">发布</button>
+</view>

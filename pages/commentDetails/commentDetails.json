@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "comment-info": "/components/commentInfo/comment"
+  },
+  "navigationBarTitleText": "评论详情"
+}

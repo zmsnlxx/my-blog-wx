@@ -4,7 +4,8 @@
     "pages/message/message",
     "pages/tag/tag",
     "pages/class/class",
-    "pages/articleDetails/articleDetails"
+    "pages/articleDetails/articleDetails",
+    "pages/commentDetails/commentDetails"
   ],
   "window": {
     "backgroundTextStyle": "light",
