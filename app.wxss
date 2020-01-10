@@ -75,20 +75,16 @@ page{
   background-color: white;
 }
 .inputView .input {
-  width: 75%;
+  width: 65%;
   height: 80%;
   line-height: 80rpx;
   margin-top: 8rpx;
   padding-left: 20rpx;
 }
-.inputView .btn {
-  width: 20%;
-  line-height: 80rpx;
-  display: inline-block;
-  text-align: center;
-}
 .inputView .button {
   background-color: #fff;
+  font-size: 14px;
+  line-height: 80rpx;
 }
 .inputView .button:after {
   border: none;

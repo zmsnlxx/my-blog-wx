@@ -12,7 +12,10 @@
                     <image class="fabulous-icon" src="../../images/fabulous.png" style="width: 20rpx"></image>
                 </view>
             </view>
-            <view class="content_comment">{{ item.comment }}</view>
+            <view class="content_comment">
+                <text wx:if="{{item.replyUser}}" style="font-size: 12px;display: inline-block;margin-right: 10rpx">{{item.replyUser}}</text>
+                <text>{{ item.comment }}</text>
+            </view>
             <view class="content_btn" wx:if="{{ item.reply.length > 0 }}" data-comment="{{item}}" bindtap="getReply">{{ item.reply.length }}条回复>></view>
             <view class="content_btn" wx:else data-comment="{{item}}" bindtap="goReply">回复</view>
         </view>

@@ -35,7 +35,7 @@
    </view>
     <!--  底部评论框  -->
    <view class="inputView">
-      <input class="input" placeholder="{{placeholder}}" value="{{textarea}}" bindinput="listenerPhoneInput" />
+      <input class="input" placeholder="{{placeholder}}" value="{{textarea}}" bindinput="listenerInput" />
       <button class="button" bindgetuserinfo='goComment' open-type="getUserInfo">发布</button>
    </view>
    <!--  遮罩层  -->
@@ -74,14 +74,14 @@
                <view class="content_comment">
                   <text wx:if="{{item.replyUser}}" style="font-size: 12px;display: inline-block;margin-right: 10rpx">{{item.replyUser}}</text>
                   <text>{{ item.comment }}</text>
-                  </view>
+               </view>
                <view class="content_btn" wx:if="{{ item.reply.length > 0 }}" data-comment="{{item}}" bindtap="getReply">{{ item.reply.length }}条回复>></view>
                <view class="content_btn" wx:else data-comment="{{item}}" bindtap="goReplyComment">回复</view>
             </view>
          </view>
       </view>
       <view class="reply-input">
-         <input class="input" placeholder="{{replyPlaceholder}}" value="{{textarea}}" bindinput="listenerPhoneInput" />
+         <input class="input" placeholder="{{replyPlaceholder}}" value="{{textarea}}" bindinput="listenerInput" />
          <button class="button" bindgetuserinfo='goComment' data-commentId="{{currentComment.id}}" open-type="getUserInfo">回复</button>
       </view>
    </scroll-view>

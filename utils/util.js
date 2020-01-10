@@ -19,7 +19,7 @@ const checkResp = resp => {
       if (resp.data !== null) {
           return resp.data;
       }
-      console.log(resp)
+      console.log(resp);
       return resp;
   }
   wx.showModal({

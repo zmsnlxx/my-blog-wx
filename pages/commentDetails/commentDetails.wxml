@@ -1,5 +1,5 @@
 <!-- 评论详情页 -->
-<scroll-view scroll-y="{{true}}" bindscroll="getScroll" catchtouchmove="true" animation="{{animationData}}">
+<scroll-view scroll-y="{{true}}">
     <view class="comment-content">
         <view class="item">
             <image class="img" mode="aspectFill" src="{{ currentComment.url }}"></image>
@@ -16,6 +16,7 @@
 </scroll-view>
 <view style="height: 90rpx;"></view>
 <view class="inputView">
-    <input class="input" placeholder="{{placeholder}}" value="{{textarea}}" bindinput="listenerPhoneInput" />
+    <input class="input" placeholder="{{placeholder}}" value="{{textarea}}" bindinput="listenerInput" />
+    <text wx:if="{{ isReply }}" class="button" bindtap="cancelReply">取消</text>
     <button class="button" bindgetuserinfo='goComment' open-type="getUserInfo">发布</button>
 </view>

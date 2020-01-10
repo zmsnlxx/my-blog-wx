@@ -65,7 +65,6 @@ Page({
         this.showModal();
     },
     goReply(e) {
-        console.log(e.target.dataset.comment);
         const {name, id} = e.target.dataset.comment;
         this.setData({
             placeholder: `回复 ${name}`,
@@ -73,7 +72,6 @@ Page({
         })
     },
     goReplyComment(e) {
-        console.log(e.target.dataset.comment);
         const {name, id} = e.target.dataset.comment;
         this.setData({
             replyPlaceholder: `回复 ${name}`,
@@ -89,7 +87,6 @@ Page({
             timingFunction: "linear",
             delay: 0
         });
-        console.log(animation);
         this.animation = animation;
         animation.translateY(800).step();
         this.setData({
@@ -197,10 +194,17 @@ Page({
     },
 
     // 获取评论框值
-    listenerPhoneInput: function(e) {
+    listenerInput: function(e) {
         this.setData({
             textarea: e.detail.value
         });
+    },
+
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onUnload: function () {
+        wx.removeStorageSync('articleId');
     },
 
     // 点赞
@@ -210,7 +214,6 @@ Page({
                 icon: 'none',
                 title: '您已点赞!'
             });
-            return;
         } else {
             let url = `${config.api_rootspath.api}/api/article/updateArticle`;
             let params = {
@@ -230,12 +233,5 @@ Page({
                 })
             })
         }
-    },
-    getScroll(e){
-        console.log(e.detail.scrollTop);
-        const scrollTop = e.detail.scrollTop;
-        this.setData({
-            scrollTop
-        })
     }
 });

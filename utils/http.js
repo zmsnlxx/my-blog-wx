@@ -16,14 +16,14 @@ function ajax(url,data,method){
         method: method || 'get',
         success: function (obj) {
           console.log(obj);
-          if (obj.statusCode == 200) {
-            if (obj.data.code == 0 || obj.data.code == 1) {
+          if (obj.statusCode === 200) {
+            if (obj.data.code === 0 || obj.data.code === 1) {
                 resolve(obj.data.data)
             }
             else {
               resolve(obj.data);
             }
-          } else if (obj.statusCode == 401) {
+          } else if (obj.statusCode === 401) {
             // 重新获取token
             resolve(obj.data);
           }

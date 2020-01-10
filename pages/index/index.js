@@ -107,7 +107,6 @@ Page({
             title: "加载中"
         });
         const currentIndex = e.currentTarget.dataset.idx;
-        console.log(currentIndex);
         this.setData({
             currentIndex,
             currentTagIndex: 0

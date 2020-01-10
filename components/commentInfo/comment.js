@@ -15,6 +15,10 @@ Component({
         isShowFabulous: {
             type: Boolean,
             value: true
+        },
+        commentFabulous: {
+            type: Array,
+            value: []
         }
     },
 
@@ -29,19 +33,29 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
         async clickFabulous(e) {
             wx.showLoading({
                title: '加载中..'
             });
             const commentId = e.currentTarget.dataset.comment.id;
+            const index = this.data.commentFabulous.indexOf(commentId);
+            const commentFabulous = [...this.data.commentFabulous];
+            console.log(commentFabulous);
+            if ( index !== -1 ) {
+                wx.showToast({
+                    icon: 'none',
+                    title: '您已点赞!'
+                });
+                return;
+            }
             this.setData({
-                commentId
+                commentId,
             });
             const data = await this.updateComment();
-            this.triggerEvent('changeCommentData', {commentData: [...data].reverse()});
+            // 点赞成功之后把当前评论id存起来
+            commentFabulous.push(commentId);
+            this.triggerEvent('changeCommentData', {commentData: [...data].reverse(), commentFabulous});
         },
-
         // 更新留言点赞
         updateComment() {
             const params = {

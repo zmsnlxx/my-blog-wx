@@ -13,28 +13,20 @@ Page({
         commentId: null,
         textarea: '',
         commentData: [],
-        showModalStatus: false,
-        animationData: null,
         currentComment: [],
-        hostCommentData: []
+        hostCommentData: [],
+        commentFabulous: [],
+        isReply: false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: async function () {
-        wx.showLoading({
-            title: '加载中'
-        });
-        const commentData = await this.getComment() || [];
-        const hostCommentData = [...commentData].sort(this.sortKey('fabulousNum')).slice(0, 5);
-        console.log(hostCommentData);
-        console.log(commentData);
+        const commentFabulous = wx.getStorageSync('commentFabulous') || [];
         this.setData({
-            commentData: [...commentData].reverse(),
-            hostCommentData
-        });
-        wx.hideLoading();
+            commentFabulous
+        })
     },
 
     sortKey(property){
@@ -81,7 +73,6 @@ Page({
             };
             let url = `${config.api_rootspath.api}/api/comment/${ this.data.commentId ? 'updateComment' : 'addComment'}`;
             ajax(url,params,'post').then(res => {
-                console.log(res);
                 wx.hideLoading();
                 wx.showToast({
                     title: '留言成功!'
@@ -105,58 +96,16 @@ Page({
         }
     },
 
-    //显示对话框
-    showModal() {
-        // 显示遮罩层
-        const animation = wx.createAnimation({
-            duration: 200,
-            timingFunction: "linear",
-            delay: 0
-        });
-        console.log(animation);
-        this.animation = animation;
-        animation.translateY(800).step();
-        this.setData({
-            animationData: animation.export(),
-            showModalStatus: true
-        });
-        setTimeout(function () {
-            animation.translateY(0).step();
-            this.setData({
-                animationData: animation.export()
-            })
-        }.bind(this), 200)
-    },
-    //隐藏对话框
-    hideModal() {
-        // 隐藏遮罩层
-        const animation = wx.createAnimation({
-            duration: 200,
-            timingFunction: "linear",
-            delay: 0
-        });
-        this.animation = animation;
-        animation.translateY(800).step();
-        this.setData({
-            animationData: animation.export(),
-        });
-        setTimeout(function () {
-            animation.translateY(0).step();
-            this.setData({
-                animationData: animation.export(),
-                showModalStatus: false
-            })
-        }.bind(this), 200)
-    },
-
     // 字组件点赞返回事件
     changeCommentData(e) {
-        const commentData = e.detail.commentData;
+        const { commentData, commentFabulous } = e.detail;
         const hostCommentData = [...commentData].sort(this.sortKey('fabulousNum')).slice(0, 5);
         this.setData({
             commentData,
-            hostCommentData
+            hostCommentData,
+            commentFabulous
         });
+        wx.setStorageSync('commentFabulous', commentFabulous);
         wx.hideLoading();
     },
 
@@ -165,12 +114,21 @@ Page({
         const { name, id } = e.detail.comment;
         this.setData({
             placeholder: `@${ name }`,
-            commentId: id
+            commentId: id,
+            isReply: true
+        });
+    },
+
+    cancelReply() {
+        this.setData({
+            placeholder: '少侠请留步...',
+            commentId: null,
+            isReply: false
         });
     },
 
     // 获取评论框值
-    listenerPhoneInput: function(e) {
+    listenerInput: function(e) {
         this.setData({
             textarea: e.detail.value
         });
@@ -190,7 +148,18 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {},
+    onShow: async function () {
+        wx.showLoading({
+            title: '加载中'
+        });
+        const commentData = await this.getComment() || [];
+        const hostCommentData = [...commentData].sort(this.sortKey('fabulousNum')).slice(0, 5);
+        this.setData({
+            commentData: [...commentData].reverse(),
+            hostCommentData
+        });
+        wx.hideLoading();
+    },
 
     /**
      * 生命周期函数--监听页面隐藏
