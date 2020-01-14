@@ -22,7 +22,7 @@ Page({
         });
         setTimeout(() => {
             wx.hideLoading();
-        },500)
+        }, 500)
     },
     /**
      * 生命周期函数--监听页面隐藏
@@ -32,15 +32,15 @@ Page({
     },
     // 子组件点击回复返回事件
     replyComment(e) {
-        const { name } = e.detail.comment;
+        const {name} = e.detail.comment;
         this.setData({
-            placeholder: `回复${ name }`,
-            replyUser: `@${ name }`,
+            placeholder: `回复${name}`,
+            replyUser: `@${name}`,
             isReply: true
         });
     },
     // 获取评论框值
-    listenerInput: function(e) {
+    listenerInput: function (e) {
         this.setData({
             textarea: e.detail.value
         });
@@ -79,7 +79,7 @@ Page({
                 id: this.data.commentId
             };
             let url = `${config.api_rootspath.api}/api/comment/updateComment`;
-            ajax(url,params,'post').then(res => {
+            ajax(url, params, 'post').then(res => {
                 const currentComment = res.find(item => item.id === this.data.commentId);
                 wx.hideLoading();
                 wx.showToast({

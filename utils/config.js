@@ -12,7 +12,7 @@ var mode = 2;
 var api_roots = [
   '', // 模拟地址
   '', // 开发地址
-  'http://blog.zmsnlxx.cn', // 正式地址
+  'https://www.zmsnlxx.cn', // 正式地址
 ];
 
 // 配置信息

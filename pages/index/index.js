@@ -24,18 +24,8 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: async function () {
-        wx.showLoading({
-            title: '加载中..'
-        });
-        // 初始化时拿到所有的文章
-        const allArticle = await this.getAllArticle();
-        this.setData({
-            allArticle
-        });
-        this.checkArticle();
-        // 默认显示最新文章，根据时间先后对所有文章进行排序
-        wx.hideLoading();
+    onLoad: function () {
+
     },
 
     // 文章处理
@@ -134,8 +124,18 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-
+    onShow: async function () {
+        wx.showLoading({
+            title: '加载中..'
+        });
+        // 初始化时拿到所有的文章
+        const allArticle = await this.getAllArticle();
+        this.setData({
+            allArticle
+        });
+        this.checkArticle();
+        // 默认显示最新文章，根据时间先后对所有文章进行排序
+        wx.hideLoading();
     },
 
     /**

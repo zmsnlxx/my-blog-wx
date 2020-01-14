@@ -17,7 +17,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: async function () {
+  onShow: async function () {
     // 初始化时首先获取所有文章分类，根据currentIndex（当前文章分类索引）获取当前分类下所有文章
     const allClass = await this.getAllClass();
     const classId = allClass[this.data.currentIndex]['id'];
