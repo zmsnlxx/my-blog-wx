@@ -1,12 +1,23 @@
 const config = require("../../utils/config.js");
 const ajax = require("../../utils/http.js").ajax;
 import regeneratorRuntime from '../../utils/runtime.js';
+const moment = require('../../utils/moment.js');
+
+
 
 Component({
     properties: {
         commentData: {
             type: Array,
-            value: []
+            value: [],
+            observer: function (newVal) {
+                newVal.forEach(item => {
+                    item.time = moment(item.time).format('YYYY-MM-DD HH:mm')
+                });
+                this.setData({
+                    comment: newVal
+                })
+            }
         },
         title: {
             type: String,
@@ -26,7 +37,8 @@ Component({
      * 组件的初始数据
      */
     data: {
-        commentId: null
+        commentId: null,
+        comment: []
     },
 
     /**
@@ -40,7 +52,6 @@ Component({
             const commentId = e.currentTarget.dataset.comment.id;
             const index = this.data.commentFabulous.indexOf(commentId);
             const commentFabulous = [...this.data.commentFabulous];
-            console.log(commentFabulous);
             if ( index !== -1 ) {
                 wx.showToast({
                     icon: 'none',

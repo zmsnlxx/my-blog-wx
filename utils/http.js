@@ -15,7 +15,6 @@ function ajax(url,data,method){
         data: data || {},
         method: method || 'get',
         success: function (obj) {
-          console.log(obj);
           if (obj.statusCode === 200) {
             if (obj.data.code === 0 || obj.data.code === 1) {
                 resolve(obj.data.data)

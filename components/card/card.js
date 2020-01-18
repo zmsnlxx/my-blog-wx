@@ -1,17 +1,29 @@
 // components/headInfo/headInfo.js
+const moment = require('../../utils/moment.js');
+
 
 Component({
     properties: {
         article: {   // 头部信息
             type: Array,
-            value: []
+            value: [],
+            observer: function (newVal) {
+                newVal.forEach(item => {
+                    item.updateTime = moment(item.updateTime).format('YYYY-MM-DD HH:mm')
+                });
+                this.setData({
+                    articleData: newVal
+                })
+            }
         },
     },
 
     /**
      * 组件的初始数据
      */
-    data: {},
+    data: {
+        articleData: []
+    },
 
     /**
      * 组件的方法列表

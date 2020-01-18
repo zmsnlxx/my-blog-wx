@@ -20,7 +20,8 @@ Page({
         scrollTop: 0,
         textarea: '',
         showModalStatus: false,
-        animationData: null
+        animationData: null,
+        isReply: false
     },
     onLoad: async function () {
         const that = this;
@@ -45,7 +46,7 @@ Page({
         //设置文档显示主题，默认'light'
         article.theme = 'dark';
         this.setData({
-            articleData: data,
+            articleData: Object.assign(data, {time: moment(data.updateTime).format('YYYY-MM-DD HH:mm')}),
             article
         });
         wx.hideLoading();
@@ -68,8 +69,16 @@ Page({
         const {name, id} = e.target.dataset.comment;
         this.setData({
             placeholder: `回复 ${name}`,
+            isReply: true,
             commentId: id,
         })
+    },
+    cancelReply() {
+        this.setData({
+            placeholder: '少侠请留步...',
+            commentId: null,
+            isReply: false
+        });
     },
     goReplyComment(e) {
         const {name, id} = e.target.dataset.comment;
@@ -125,6 +134,18 @@ Page({
     // 发表评论
     goComment(res) {
         wx.showLoading({title: '加载中', icon: 'loading'});
+        if (this.data.textarea === '') {
+            wx.hideLoading();
+            wx.showToast({
+                icon: 'none',
+                title: '请输入评论内容!'
+            });
+            return;
+        }
+        const textarea = this.data.textarea;
+        this.setData({
+            textarea: ''
+        });
         // 声明一个变量接收用户授权信息
         const userInfo = res.detail.userInfo || undefined;
         const commentId = res.target.dataset.commentid || null;
@@ -135,15 +156,8 @@ Page({
         }
         // 判断是否授权  true 替换微信用户头像
         if (userInfo !== undefined) {
-            if (this.data.textarea === '') {
-                wx.hideLoading();
-                wx.showToast({
-                    title: '请输入评论内容!'
-                });
-                return;
-            }
             let commentParams = {
-                comment: this.data.textarea,
+                comment: textarea,
                 time: moment().format('YYYY-MM-DD HH:mm'),
                 getOS: '微信用户',
                 getBrowse: '微信小程序',
@@ -173,13 +187,13 @@ Page({
                 );
                 const currentComment = commentId ? data.commentData.find(item => item.id === commentId) || [] : [];
                 this.setData({
-                    textarea: '',
                     articleData: data,
                     article,
                     placeholder: '少侠请留步...',
                     replyPlaceholder: '回复评论...',
                     commentId: null,
                     replyUser: null,
+                    isReply: false,
                     currentComment
                 })
             })

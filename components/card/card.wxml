@@ -1,7 +1,7 @@
 <!-- 文章卡片模版 -->
 <scroll-view scroll-y="{{true}}" style="width: 100%">
     <view class="content" wx:if="{{article.length > 0}}">
-        <view class="article_info" wx:for="{{article}}" wx:key="index" bindtap="getArticleDetails" data-articleId="{{item.id}}">
+        <view class="article_info" wx:for="{{articleData}}" wx:key="index" bindtap="getArticleDetails" data-articleId="{{item.id}}">
             <view class="article_header">
                 {{item.title}}
             </view>
@@ -11,7 +11,7 @@
                         {{item.author || 'lxx'}}
                     </text>
                     <text class="text">
-                        {{ item.updateTime ? item.updateTime : item.createdTime }}
+                        {{ item.updateTime }}
                     </text>
                 </view>
                 <image style="width: 100%" src="{{item.img}}"></image>

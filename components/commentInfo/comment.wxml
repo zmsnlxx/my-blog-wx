@@ -1,19 +1,19 @@
 <!-- 评论展示模版 -->
 <view class="commentNav">
     <view wx:if="{{ title !== '' }}" class="title">{{ title }}</view>
-    <view class="item" wx:for="{{ commentData }}" wx:key="{{index}}">
+    <view class="item" wx:for="{{ comment }}" wx:key="{{index}}">
         <image class="img" src="{{ item.url }}"></image>
         <view class="content">
             <view class="content_name">
                 <text style="margin-right: 30rpx;color: black;">{{ item.name }}</text>
-                <text>{{ item.time }}</text>
+                <text wx:if="{{item.time}}">{{ item.time }}</text>
                 <view class="fabulous" bindtap="clickFabulous" data-comment="{{item}}" wx:if="{{isShowFabulous}}">
                     <text wx:if="{{ item.fabulousNum !== 0 }}" class="fabulous-num">{{ item.fabulousNum }}</text>
                     <image class="fabulous-icon" src="../../images/fabulous.png" style="width: 20rpx"></image>
                 </view>
             </view>
             <view class="content_comment">
-                <text wx:if="{{item.replyUser}}" style="font-size: 12px;display: inline-block;margin-right: 10rpx">{{item.replyUser}}</text>
+                <text wx:if="{{item.replyUser}}" style="font-size: 12px;display: block;margin: 0 10rpx 10rpx 0;border-bottom: 1px dashed #999;padding-bottom: 10rpx">{{item.replyUser}}</text>
                 <text>{{ item.comment }}</text>
             </view>
             <view class="content_btn" wx:if="{{ item.reply.length > 0 }}" data-comment="{{item}}" bindtap="getReply">{{ item.reply.length }}条回复>></view>

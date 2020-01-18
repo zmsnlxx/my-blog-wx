@@ -1,5 +1,5 @@
 <!-- 暂无数据模版 -->
 <view class="error-info">
-    <image class="img" src="../../images/none.png"></image>
+    <image class="img" src="../../images/error.png"></image>
     <text class="message">{{ message }}</text>
 </view>
