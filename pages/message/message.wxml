@@ -6,7 +6,9 @@
 <view style="height: 90rpx;"></view>
 <!--  底部评论框  -->
 <view class="inputView">
-    <input class="input" placeholder="{{placeholder}}" value="{{textarea}}" bindinput="listenerInput" />
+    <label>
+        <input class="input" placeholder="{{placeholder}}" value="{{textarea}}" bindinput="listenerInput" />
+    </label>
     <text wx:if="{{ isReply }}" class="button" bindtap="cancelReply">取消</text>
     <button class="button" bindgetuserinfo='goComment' open-type="getUserInfo">发布</button>
 </view>
